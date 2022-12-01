@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Product\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +26,11 @@ Route::prefix('category')->group(function () {
         Route::get('getCategoryList', [CategoryController::class, 'getCategoryList']);
         Route::get('getCategoryProducts', [CategoryController::class, 'getCategoryProducts']);
     });
+
 });
 
+Route::prefix('product')->group(function () {
+    Route::namespace('Product')->group(function () {
+        Route::post('createProduct', [ProductController::class, 'createProduct']);
+    });
+});
