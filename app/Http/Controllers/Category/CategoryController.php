@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    protected $category;
-
 
     /**
      * This function is to return list of categories with given pagination data.
@@ -24,9 +22,15 @@ class CategoryController extends Controller
         $param = $request->all();
         $page = !empty($param['page']) ? $param['page'] : 1;
         $limit = !empty($param['limit']) ? $param['limit'] : 10;
+        $getAllCategories = !empty($param['all']) ? $param['all'] : 0;
 
-        $query = DB::table('categories')->where('active', 1);
-        $categories = $query->forPage($page, $limit)->get();
+        if ($getAllCategories == 0) {
+            $query = DB::table('categories')->where('active', 1);
+            $categories = $query->forPage($page, $limit)->get();
+        } else {
+            $categories = Category::get();
+        }
+
 
 
 
@@ -43,19 +47,6 @@ class CategoryController extends Controller
         $categories = Category::where('parent_id',0)->get();
         $allCategories = $this->findSubCategories(0);
 
-//        $allCategories = [
-//            [
-//                'name' => '123',
-//
-//                'products' => [
-//                    [
-//                        'name' => 'aaa',
-//                        'price' => '123'
-//                    ]
-//                ]
-//            ]
-//        ];
-
         return $allCategories;
     }
 
@@ -64,7 +55,7 @@ class CategoryController extends Controller
      * @param $id
      * @return array
      */
-    private function findSubCategories($id)
+    private function findSubCategories ($id)
     {
         $result = [];
         $categories = Category::where('parent_id', $id)->get();

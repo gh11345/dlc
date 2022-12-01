@@ -71,6 +71,7 @@ Method: GET<br/>
 Parameters: <br/>
    - page (default 1) <br/>
    - limit (default 10) <br/>
+   - all (get all categories default 0) <br/>
     
 Sample Payload: 
 
