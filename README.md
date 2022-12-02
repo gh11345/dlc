@@ -18,7 +18,7 @@ The endpoints used in this project:
 
 URL :http://34.212.176.88/api/category/getCategoryProducts<br/>
 Method: GET<br/>
-Sample Payload:<br/>
+Sample Response:<br/>
 
 ```json
 [    
@@ -73,7 +73,7 @@ Parameters: <br/>
    - limit (default 10) <br/>
    - all (get all categories default 0) <br/>
     
-Sample Payload: 
+Sample Response:<br/>
 
 ```json
 [
@@ -106,13 +106,35 @@ Parameters: <br/>
    - price <br/>
    - active <br/>
    
-Sample Payload: 
+Sample Payload:<br/>
+```json
+{
+    "name" : "iPhone 14",
+    "price" : 2000,
+    "categories" : [
+        {
+            "id" : 9,
+            "name" : "Telus",
+            "parent_id" : 2,
+            "active" : 1
+        }
+    ],
+    "active" : {
+        "name" : "yes",
+        "value" : 1
+    }
+}
+
+```
+
+Sample Response: 
 
 ```json
 {
     "status" : 200
 }
 ```
+
 ## Links
 
 github: https://github.com/gh11345/dlc<br/>
