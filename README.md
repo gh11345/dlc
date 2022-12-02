@@ -95,6 +95,24 @@ Sample Payload:
     }
 ]
 ```
+
+**Add Product<br/>**
+
+URL: http://34.212.176.88/api/product/createProduct<br/>
+Method: POST<br/>
+Parameters: <br/>
+   - name <br/>
+   - categories <br/>
+   - price <br/>
+   - active <br/>
+   
+Sample Payload: 
+
+```json
+{
+    "status" : 200
+}
+```
 ## Links
 
 github: https://github.com/gh11345/dlc<br/>
